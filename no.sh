@@ -1,3 +1,4 @@
+#!/bin/bash
 set_iptables_rules() {
     
     echo "Очистка всех существующих правил OUTPUT"
