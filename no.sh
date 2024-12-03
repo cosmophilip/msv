@@ -1,4 +1,24 @@
 #!/bin/bash
+!/bin/bash
+
+# Функция для подтверждения выбора пользователя
+confirm() {
+    local prompt="$1"
+    read -p "$prompt [y/n, Enter = yes]: " choice
+    case "$choice" in
+        ""|y|Y|yes|Yes)  # Пустой ввод или "да"
+            return 0  # Подтверждение действия
+            ;;
+        n|N|no|No)  # Любой вариант "нет"
+            return 1  # Отказ от действия
+            ;;
+        *)
+            echo "Пожалуйста, введите y или n."
+            confirm "$prompt"  # Повторный запрос, если ответ не распознан
+            ;;
+    esac
+}
+
 set_iptables_rules() {
     
     echo "Очистка всех существующих правил OUTPUT"
