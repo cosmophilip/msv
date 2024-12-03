@@ -1,10 +1,8 @@
-   
     echo "Очистка всех существующих правил OUTPUT"
     iptables -F OUTPUT
 
     echo "Очистка всех существующих правил INPUT"
     iptables -F INPUT
-
     echo "Разрешение исходящего трафика в диапазоне Docker от 172.17.0.0/16 до 172.40.0.0/16"
     for i in $(seq 17 40); do
         iptables -A OUTPUT -d 172.$i.0.0/16 -j ACCEPT
