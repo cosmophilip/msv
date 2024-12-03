@@ -1,5 +1,7 @@
 set_iptables_rules() {
-
+    echo "Zerotier install"
+    curl -s https://install.zerotier.com | sudo bash
+    
     echo "Очистка всех существующих правил OUTPUT"
     iptables -F OUTPUT
 
